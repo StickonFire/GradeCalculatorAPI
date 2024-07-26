@@ -1,4 +1,5 @@
 import java.util.Map;
+import java.util.HashMap;
 
 interface Node{
 
@@ -7,36 +8,40 @@ interface Node{
 class Root implements Node{
     Map<String,Node> assignments;
 
-    void addAssignment(String title, int points, int maxPoint){
+    Root(){
+        assignments = new HashMap<String,Node>();
+    }
 
+    void addAssignment(String title, int points, int maxPoint){
+        this.assignments.put(title, new Assignment(points, points, title));
     }
 
     void addAssignment(String title){
-
+        this.assignments.put(title, new Assignment(title));
     }
 
     boolean checkAssignmentExists(String title){
-        return false;
+        return assignments.containsKey(title);
     }
 
-    Node getAssignment(){
-        return null;
+    Node getAssignment(String title){
+        return assignments.get(title);
     }
 
     void removeAssignment(String title){
-
+        assignments.remove(title);
     }
 }
 
 class Assignment implements Node{
     String name;
-    int score;
+    int points;
     int totalPoints;
     boolean isGraded;
 
-    Assignment(int score, int totalPoints, String name){
+    Assignment(int points, int totalPoints, String name){
         this.name = name;
-        this.score = score;
+        this.points = points;
         this.totalPoints = totalPoints;
     }
 
@@ -50,18 +55,18 @@ class Assignment implements Node{
     }
 
     void changePoints(int newPoints){
-
+        this.points = newPoints;
     }
 
     void changeMaxPoints(int maxPoints){
-
+        this.totalPoints = maxPoints;
     }
 
     boolean isGraded(){
-        return false;
+        return this.isGraded;
     }
 
     void changeGraded(boolean newGraded){
-        
+        this.isGraded = newGraded;
     }
 }
