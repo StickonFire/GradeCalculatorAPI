@@ -1,6 +1,8 @@
+package GradeCalculatorAPI;
+
 public class GradeCalculatorAPI {
     Root assignments;
-    
+
     void addAssignment(int points, int totalPoints, String name){
 
     }
