@@ -11,8 +11,8 @@ interface Node{
 class Root implements Node{
     Map<String,Node> assignments;
 
-    Root(){
-        this.assignments = new HashMap<String, Node>();
+    Root(Map<String, Node> assignments){
+        this.assignments = assignments;
     }
 
     public void changePoints(int newPoints) throws IllegalStateException{
