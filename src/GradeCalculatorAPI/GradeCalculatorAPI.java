@@ -3,6 +3,10 @@ package src.GradeCalculatorAPI;
 public class GradeCalculatorAPI {
     Root assignments;
 
+    void addAssignment(int points, int totalPoints, String name, boolean isGraded){
+        assignments.addAssignment(name, points, totalPoints, isGraded);
+    }
+
     void addAssignment(int points, int totalPoints, String name){
         assignments.addAssignment(name, points, totalPoints);
     }
