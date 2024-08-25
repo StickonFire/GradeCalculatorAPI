@@ -1,4 +1,4 @@
-package GradeCalculatorAPI;
+package src.GradeCalculatorAPI;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -12,11 +12,15 @@ class Root implements Node{
     Map<String,Node> assignments;
 
     Root(){
-        assignments = new HashMap<String,Node>();
+        this.assignments = new HashMap<String, Node>();
     }
 
     public void changePoints(int newPoints) throws IllegalStateException{
         throw new IllegalStateException("Root doesn't have points to change.");
+    }
+
+    void addAssignment(String title, int points, int maxPoint,boolean isGraded){
+        this.assignments.put(title, new Assignment(points, maxPoint, title, isGraded));
     }
 
     void addAssignment(String title, int points, int maxPoint){
@@ -36,7 +40,7 @@ class Root implements Node{
     }
     
     /**
-     * Since this is an unexpected call, this will do nothing.
+     * Since t   his is an unexpected call, this will do nothing.
      */
     public void changeMaxPoints(int maxPoints) {
         return;
@@ -56,6 +60,13 @@ class Assignment implements Node{
     int points;
     int totalPoints;
     boolean isGraded;
+
+    Assignment(int points, int totalPoints, String name, boolean isGraded){
+        this.name = name;
+        this.points = points;
+        this.totalPoints = totalPoints;
+        this.isGraded = isGraded;
+    }
 
     Assignment(int points, int totalPoints, String name){
         this.name = name;

@@ -1,4 +1,4 @@
-package GradeCalculatorAPI;
+package src.GradeCalculatorAPI;
 
 public class GradeCalculatorAPI {
     Root assignments;
@@ -14,7 +14,7 @@ public class GradeCalculatorAPI {
     void addAssignment(String name){
         assignments.addAssignment(name);
     }
-
+ 
     boolean checkAssignmentExists(String title){
         return assignments.checkAssignmentExists(title);
     }
