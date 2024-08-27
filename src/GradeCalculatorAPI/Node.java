@@ -19,8 +19,8 @@ class Root implements Node{
         throw new IllegalStateException("Root doesn't have points to change.");
     }
 
-    void addAssignment(String title){
-        this.assignments.put(title, new Assignment(title));
+    void addAssignment(Assignment assignment){
+        this.assignments.put(assignment.name,assignment);
     }
 
     boolean checkAssignmentExists(String title){
@@ -40,6 +40,20 @@ class Root implements Node{
 
     void removeAssignment(String title){
         assignments.remove(title);
+    }
+}
+
+/**
+ * A class that generates assignments.
+ */
+class AssignmentFactory{
+
+    public static Assignment makeAssignmentOnlyName(String title){
+        return new Assignment(title);
+    }
+
+    public static Assignment makeAssignment(String title, int points, int totalPoints, boolean isGraded){
+        return new Assignment(points,totalPoints,title,isGraded);
     }
 }
 
