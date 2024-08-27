@@ -4,8 +4,8 @@ import java.util.Map;
 import java.util.HashMap;
 
 interface Node{
-    void changePoints(int points);
-    void changeMaxPoints(int maxPoints);
+    void setPoints(int points);
+    void setMaxPoints(int maxPoints);
 }
 
 class Root implements Node{
@@ -15,9 +15,6 @@ class Root implements Node{
         this.assignments = assignments;
     }
 
-    public void changePoints(int newPoints) throws IllegalStateException{
-        throw new IllegalStateException("Root doesn't have points to change.");
-    }
 
     void addAssignment(Assignment assignment){
         this.assignments.put(assignment.name,assignment);
@@ -26,11 +23,15 @@ class Root implements Node{
     boolean checkAssignmentExists(String title){
         return assignments.containsKey(title);
     }
-    
+
+    public void setPoints(int newPoints) throws IllegalStateException{
+        throw new IllegalStateException("Root doesn't have points to change.");
+    }   
+
     /**
      * Since this is an unexpected call, this will do nothing.
      */
-    public void changeMaxPoints(int maxPoints) {
+    public void setMaxPoints(int maxPoints) {
         return;
     }
 
@@ -74,11 +75,11 @@ class Assignment implements Node{
         this.name = name;
     }
 
-    public void changePoints(int newPoints){
+    public void setPoints(int newPoints){
         this.points = newPoints;
     }
 
-    public void changeMaxPoints(int maxPoints){
+    public void setMaxPoints(int maxPoints){
         this.totalPoints = maxPoints;
     }
 
@@ -86,7 +87,7 @@ class Assignment implements Node{
         return this.isGraded;
     }
 
-    void changeGraded(boolean newGraded){
+    void setIsGraded(boolean newGraded){
         this.isGraded = newGraded;
     }
 }
