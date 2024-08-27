@@ -6,13 +6,6 @@ public class GradeCalculatorAPI {
     void addAssignment(int points, int totalPoints, String name, boolean isGraded){
         assignments.addAssignment(name, points, totalPoints, isGraded);
     }
-
-    void addAssignment(int points, int totalPoints, String name){
-        assignments.addAssignment(name, points, totalPoints);
-    }
-
-    void addAssignment(int maxPoints, String name){
-        assignments.addAssignment(name, maxPoints);
     }
 
     void addAssignment(String name){

@@ -19,18 +19,6 @@ class Root implements Node{
         throw new IllegalStateException("Root doesn't have points to change.");
     }
 
-    void addAssignment(String title, int points, int maxPoint,boolean isGraded){
-        this.assignments.put(title, new Assignment(points, maxPoint, title, isGraded));
-    }
-
-    void addAssignment(String title, int points, int maxPoint){
-        this.assignments.put(title, new Assignment(points, maxPoint, title));
-    }
-
-    void addAssignment(String title, int maxPoint){
-        this.assignments.put(title, new Assignment(maxPoint, title));
-    }
-
     void addAssignment(String title){
         this.assignments.put(title, new Assignment(title));
     }
@@ -40,7 +28,7 @@ class Root implements Node{
     }
     
     /**
-     * Since t   his is an unexpected call, this will do nothing.
+     * Since this is an unexpected call, this will do nothing.
      */
     public void changeMaxPoints(int maxPoints) {
         return;
@@ -66,17 +54,6 @@ class Assignment implements Node{
         this.points = points;
         this.totalPoints = totalPoints;
         this.isGraded = isGraded;
-    }
-
-    Assignment(int points, int totalPoints, String name){
-        this.name = name;
-        this.points = points;
-        this.totalPoints = totalPoints;
-    }
-
-    Assignment(int totalPoints, String name){
-        this.totalPoints = totalPoints;
-        this.name = name;
     }
 
     Assignment(String name){
