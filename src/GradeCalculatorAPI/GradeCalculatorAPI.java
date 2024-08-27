@@ -19,12 +19,12 @@ public class GradeCalculatorAPI {
         assignments.removeAssignment(title);
     }
 
-    void changePoints(String title, int newPoints){
-        assignments.getAssignment(title).changePoints(newPoints);
+    void setPoints(String title, int newPoints){
+        assignments.getAssignment(title).setPoints(newPoints);
     }
 
-    void changeTotalPoints(String title, int totalPoints){
-        assignments.getAssignment(title).changeMaxPoints(totalPoints);
+    void setTotalPoints(String title, int totalPoints){
+        assignments.getAssignment(title).setTotalPoints(totalPoints);
     }
 
 

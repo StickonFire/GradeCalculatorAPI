@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 interface Node{
     void setPoints(int points);
-    void setMaxPoints(int maxPoints);
+    void setTotalPoints(int maxPoints);
 }
 
 class Root implements Node{
@@ -31,7 +31,7 @@ class Root implements Node{
     /**
      * Since this is an unexpected call, this will do nothing.
      */
-    public void setMaxPoints(int maxPoints) {
+    public void setTotalPoints(int maxPoints) {
         return;
     }
 
@@ -79,7 +79,7 @@ class Assignment implements Node{
         this.points = newPoints;
     }
 
-    public void setMaxPoints(int maxPoints){
+    public void setTotalPoints(int maxPoints){
         this.totalPoints = maxPoints;
     }
 
