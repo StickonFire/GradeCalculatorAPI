@@ -58,6 +58,12 @@ class AssignmentFactory{
     }
 }
 
+class RootFactory{
+    public static Root makeRoot(){
+        return new Root(new HashMap<String,Node>());
+    }
+}
+
 class Assignment implements Node{
     String name;
     int points;
