@@ -1,4 +1,4 @@
-package src.GradeCalculatorAPI;
+package GradeCalculatorAPI;
 
 public class GradeCalculatorAPI {
     Root assignments;
