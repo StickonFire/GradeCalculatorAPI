@@ -66,9 +66,9 @@ class RootFactory{
 
 class Assignment implements Node{
     String name;
-    int points;
-    int totalPoints;
-    boolean isGraded;
+    int points = 0;
+    int totalPoints = 0;
+    boolean isGraded = false;
 
     Assignment(int points, int totalPoints, String name, boolean isGraded){
         this.name = name;
