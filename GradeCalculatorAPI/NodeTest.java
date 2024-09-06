@@ -41,6 +41,34 @@ public class NodeTest {
     }
 
     @Test
+    public void testAssignmentEqualsTrueTitleOnlyConstructor(){
+        Assignment first = new Assignment("first");
+        Assignment second = new Assignment("first");
+        assertTrue("Checks if the constructor with titles are correctly seen as equal.",first.equals(second));
+    }
+
+    @Test
+    public void testAssignmentEqualsTrueAllVariables(){
+        Assignment first = new Assignment(1,2,"first",true);
+        Assignment second = new Assignment(1,2,"first",true);
+        assertTrue("Checks if equals checks all fields",first.equals(second));
+    }
+
+    @Test
+    public void testAssignmentEqualsFalse(){
+        Assignment first = new Assignment(1,2,"first",true);
+        Assignment second =  new Assignment(0,2,"first",true);
+        Assignment third = new Assignment(1,1,"first",true);
+        Assignment fourth = new Assignment(1,2,"no",true);
+        Assignment fifth = new Assignment(1,2,"first",false);
+
+        assertFalse("Checks if Assignment equals works when points are different",first.equals(second));
+        assertFalse("Checks if Assignment equals works when totalPoints are different",first.equals(third));
+        assertFalse("Checks if Assignment equals works when title is different",first.equals(fourth));
+        assertFalse("Checks if Assignment equals works when isGraded is different",first.equals(fifth));
+    }
+
+    @Test
     public void testRootAddAssignment(){
         HashMap<String,Node> result = new HashMap<>();
         Root test = new Root(result);
@@ -65,7 +93,7 @@ public class NodeTest {
 
         assertTrue("Make sure that checkAssignmentExists works at the Root level",test.checkAssignmentExists("value"));
     }
-
+    
     @Test 
     public void testRootGetAssignmentRootLevel(){
         HashMap<String,Node> result = new HashMap<>();

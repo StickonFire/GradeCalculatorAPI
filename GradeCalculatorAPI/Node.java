@@ -96,4 +96,15 @@ class Assignment implements Node{
     void setIsGraded(boolean newGraded){
         this.isGraded = newGraded;
     }
+
+    @Override
+    public boolean equals(Object argument){
+        Assignment other;
+        if(argument instanceof Assignment)
+            other = (Assignment) argument;
+        else
+            return false;
+        return this.name.equals(other.name) && this.points == other.points && 
+          this.totalPoints == other.totalPoints && this.isGraded == other.isGraded;
+    }
 }
