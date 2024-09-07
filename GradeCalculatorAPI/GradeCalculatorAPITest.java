@@ -12,6 +12,15 @@ public class GradeCalculatorAPITest {
     private Root root;
     private GradeCalculatorAPI api;
 
+    /**
+     * Checks if a tested method has not affected the Assignments that it shouldn't.
+     */
+    public void checkOtherAssignmentsMaintained(String methodName, int expectedSize){
+        Assignment APIfirst = (Assignment)rootContents.get("first");
+        assertEquals("Checks if " + methodName + " has the right amount of assignments after.",rootContents.values().size(),expectedSize);
+        assertEquals("Checks if " + methodName + " doesn't do anything to the already added assignment.",first,APIfirst);
+    }
+
     @Before
     public void setUpEach(){
         first = new Assignment("first");
@@ -26,12 +35,10 @@ public class GradeCalculatorAPITest {
         Assignment second = new Assignment("second");
         api.addAssignment("second");
         Assignment APIsecond = (Assignment)rootContents.get("second");
-        Assignment APIfirst = (Assignment)rootContents.get("first");
+        
         assertEquals("Checks if addAssignment properly adds an assignment with only a title defined",second,APIsecond);
         
-        assertEquals("Checks if addAssignment doesn't add too much or subtract from the assignments",rootContents.values().size(),2);
-        assertEquals("Checks if addAssignment doesn't do anything to the already added assignment",first,APIfirst);
-        
+        checkOtherAssignmentsMaintained("addAssignment(Title)",2);
     }
 
     @Test
