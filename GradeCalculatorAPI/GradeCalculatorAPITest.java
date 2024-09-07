@@ -46,7 +46,10 @@ public class GradeCalculatorAPITest {
         Assignment second = new Assignment(1,2,"second",false);
         api.addAssignment("second",1,2,false);
         Assignment APIsecond = (Assignment)rootContents.get("second");
-        assertEquals("Checks if addAssignment doesn't add too much or subtract from the assignment",rootContents.values().size(),3);
+
+        assertEquals("Check if addAssignment properly adds an assignment when using addAssignment with points set.",second,APIsecond);
+        
+        checkOtherAssignmentsMaintained("addAssignment(Title,points,totalPoints)",2);
     }
 
     @Test
