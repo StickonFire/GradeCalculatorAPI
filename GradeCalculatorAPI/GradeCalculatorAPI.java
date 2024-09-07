@@ -7,7 +7,7 @@ public class GradeCalculatorAPI {
         this.assignments = assignments;
     }
 
-    void addAssignment(int points, int totalPoints, String name, boolean isGraded){
+    void addAssignment(String name,int points, int totalPoints, boolean isGraded){
         assignments.addAssignment(AssignmentFactory.makeAssignment(name, points, totalPoints, isGraded));
     }
 
