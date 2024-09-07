@@ -1,9 +1,26 @@
 package GradeCalculatorAPI;
 
+import java.util.HashMap;
+
 import static org.junit.Assert.*;
 import org.junit.*;
 
 public class GradeCalculatorAPITest {
+
+    private Assignment first;
+    private HashMap<String,Node> rootContents;
+    private Root root;
+    private GradeCalculatorAPI api;
+
+    @Before
+    public void setUpEach(){
+        first = new Assignment("first");
+        rootContents = new HashMap<String,Node>();
+        rootContents.put("first",first);
+        root = new Root(rootContents);
+        api = new GradeCalculatorAPI(root);
+    }
+
     @Test
     public void testAddAssignmentTitleOnlyRoot(){
         
