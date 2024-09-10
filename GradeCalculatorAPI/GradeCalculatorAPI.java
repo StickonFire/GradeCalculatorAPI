@@ -24,11 +24,15 @@ public class GradeCalculatorAPI {
     }
 
     void setPoints(String title, int newPoints){
-        assignments.getAssignment(title).setPoints(newPoints);
+        Node target = assignments.getAssignment(title);
+        if(target != null && target instanceof Assignment)
+            target.setPoints(newPoints);
     }
 
     void setTotalPoints(String title, int totalPoints){
-        assignments.getAssignment(title).setTotalPoints(totalPoints);
+        Node target = assignments.getAssignment(title);
+        if(target != null && target instanceof Assignment)
+            target.setTotalPoints(totalPoints);
     }
 
 
