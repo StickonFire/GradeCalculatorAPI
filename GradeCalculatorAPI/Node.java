@@ -11,6 +11,8 @@ interface Node{
 class Root implements Node{
     Map<String,Node> assignments;
 
+    int totalPoints = 0;
+
     Root(Map<String, Node> assignments){
         this.assignments = assignments;
     }
@@ -28,11 +30,8 @@ class Root implements Node{
         throw new IllegalStateException("Root doesn't have points to change.");
     }   
 
-    /**
-     * Since this is an unexpected call, this will do nothing.
-     */
     public void setTotalPoints(int maxPoints) {
-        return;
+        this.totalPoints = maxPoints;
     }
 
     Node getAssignment(String title){
