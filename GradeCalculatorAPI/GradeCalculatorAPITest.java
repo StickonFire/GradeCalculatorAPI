@@ -54,41 +54,87 @@ public class GradeCalculatorAPITest {
 
     @Test
     public void testCheckAssignmentExistsRootTrue(){
-
+        assertTrue("Checks if checkAssignmentExists properly identifies that the given assignment exists.",api.checkAssignmentExists("first"));
+        checkOtherAssignmentsMaintained("checkAssignmentExists",1);
     }
 
     @Test
     public void testCheckAssignmentExistsRootFalse(){
-
+        assertFalse("Checks if checkAssignmentExists properly identifies a given assignment doesn't exist.",api.checkAssignmentExists("second"));
+        checkOtherAssignmentsMaintained("checkAssignmentsExists(false)",1);
     }
 
     @Test
     public void testRootDeleteAssignmentExists(){
-
+        api.deleteAssignment("first");
+        assertEquals("Checks if deleteAssignment properly removes the only assignment inside.",rootContents.values().size(),0);
     }
 
     @Test
     public void testRootDeleteAssignmentNonexists(){
-
+        boolean flag = true;
+        try{
+            api.deleteAssignment("second");
+        }
+        catch(Exception e){
+            flag = false;
+        }
+        assertTrue("If this triggers, then deleteAssignment caused an error",flag);
+        checkOtherAssignmentsMaintained("deleteAssignment",1);
     }
 
     @Test
     public void testRootSetPointsExists(){
+        api.setPoints("first",3);
+        Assignment result = (Assignment)rootContents.get("first");
+        
+        //Check if the assignment remains the same other than the points
+        Assignment toCheck = new Assignment(3,0,"first",false);
+        assertEquals("Makes sure that setPoints correctly sets the Assignment points to 3 and only that",toCheck,result);
 
+        //Makes sure that no other changes are made.
+        assertEquals("Makes sure that setPoints doesn't change the number of assignments.",1,rootContents.values().size());
     }
 
     @Test
     public void testRootSetPointsNonexists(){
-
+        boolean triggered = false;
+        try{
+            api.setPoints("second",3);
+        }
+        catch(Exception e){
+            triggered = true;
+        }
+        
+        //Make sure that nothing happened.
+        assertFalse("Make sure no error happened.",triggered);
+        checkOtherAssignmentsMaintained("setPoints(nonexistant call)",1);
     }
 
     @Test
     public void testSetTotalPointsRootExists(){
+        api.setTotalPoints("first",3);
+        Assignment result = (Assignment)rootContents.get("first");
+        
+        //Check if the assignment remains the same other than the points
+        Assignment toCheck = new Assignment(0,3,"first",false);
+        assertEquals("Makes sure that setTotalPoints correctly sets the Assignment points to 3 and only that",toCheck,result);
 
+        //Makes sure that no other changes are made.
+        assertEquals("Makes sure that setTotalPoints doesn't change the number of assignments.",1,rootContents.values().size());
     }
 
     @Test
     public void testSetTotalPointsRootNonExists(){
+        boolean noError = true;
+        try{
+            api.setPoints("second",4);
+        }
+        catch(Exception e){
+            noError = false;
+        }
 
+        assertTrue("Make sure no error happened.",noError);
+        checkOtherAssignmentsMaintained("setTotalPoints(nonexistant call)",1);
     }
 }
