@@ -3,6 +3,11 @@ package GradeCalculatorAPI;
 import java.util.Map;
 import java.util.HashMap;
 
+enum GradingStyle{
+    PointSystemTotalDefined, 
+    PointSystemAddUp
+}
+
 interface Node{
     void setPoints(int points);
     void setTotalPoints(int maxPoints);
@@ -12,6 +17,7 @@ class Root implements Node{
     Map<String,Node> assignments;
 
     int totalPoints = 0;
+    GradingStyle grader = GradingStyle.PointSystemAddUp;
 
     Root(Map<String, Node> assignments){
         this.assignments = assignments;
@@ -28,7 +34,11 @@ class Root implements Node{
 
     public void setPoints(int newPoints) throws IllegalStateException{
         throw new IllegalStateException("Root doesn't have points to change.");
-    }   
+    }
+
+    public void setGradingStyle(GradingStyle grader){
+        this.grader = grader;
+    }
 
     public void setTotalPoints(int maxPoints) {
         this.totalPoints = maxPoints;
