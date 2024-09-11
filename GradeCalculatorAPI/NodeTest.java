@@ -121,5 +121,30 @@ public class NodeTest {
         assertFalse("Make sure that checkAssignmentExists works at the Root level",result.containsValue(value));
     }
 
+    @Test
+    public void testRootSetGradingStyle(){
+        HashMap<String,Node> result = new HashMap<>();
+        Root test = new Root(result);
 
+        assertEquals("Make sure that default for now is correct.",GradingStyle.PointSystemAddUp,test.grader);
+
+        test.setGradingStyle(GradingStyle.PointSystemTotalDefined);
+
+        assertEquals("Make sure that the grading style properly sets to PointSysTotalDefined",GradingStyle.PointSystemTotalDefined,test.grader);
+
+        test.setGradingStyle(GradingStyle.PointSystemAddUp);
+
+        assertEquals("Make sure that the grading style properly sets to PointSysTotalDefined",GradingStyle.PointSystemAddUp,test.grader);
+
+        boolean error = false;
+        try{
+            test.setGradingStyle(GradingStyle.PointSystemAddUp);
+        }
+        catch(Exception e){
+            error = true;
+        }
+        assertFalse("Make sure no error happens when running setGradingStyle",error);
+        assertEquals("Make sure nothing happens if it is set the same.",GradingStyle.PointSystemAddUp,test.grader);
+
+    }
 }
