@@ -137,4 +137,29 @@ public class GradeCalculatorAPITest {
         assertTrue("Make sure no error happened.",noError);
         checkOtherAssignmentsMaintained("setTotalPoints(nonexistant call)",1);
     }
+
+    @Test
+    public void testSetGradingStyleRoot(){
+
+        assertEquals("Make sure that default for now is correct.",GradingStyle.PointSystemAddUp,root.grader);
+
+        api.setGradingStyle(GradingStyle.PointSystemTotalDefined);
+
+        assertEquals("Make sure that the grading style properly sets to PointSysTotalDefined",GradingStyle.PointSystemTotalDefined,root.grader);
+
+        api.setGradingStyle(GradingStyle.PointSystemAddUp);
+
+        assertEquals("Make sure that the grading style properly sets to PointSysTotalDefined",GradingStyle.PointSystemAddUp,root.grader);
+
+        boolean error = false;
+        try{
+            api.setGradingStyle(GradingStyle.PointSystemAddUp);
+        }
+        catch(Exception e){
+            error = true;
+        }
+        assertFalse("Make sure no error happens when running setGradingStyle",error);
+        assertEquals("Make sure nothing happens if it is set the same.",GradingStyle.PointSystemAddUp,root.grader);
+        
+    }
 }
