@@ -23,6 +23,11 @@ public class GradeCalculatorAPI {
         assignments.removeAssignment(title);
     }
 
+    
+    void setGradingStyle(GradingStyle gradingStyle){
+        assignments.setGradingStyle(gradingStyle);
+    }
+
     void setPoints(String title, int newPoints){
         Node target = assignments.getAssignment(title);
         if(target != null && target instanceof Assignment)
