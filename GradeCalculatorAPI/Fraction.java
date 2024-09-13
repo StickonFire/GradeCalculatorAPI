@@ -16,4 +16,17 @@ public class Fraction {
     void setDenominator(int denominator){
         this.denominator = denominator;
     }
+
+    void addToNumerator(int additive){
+        this.numerator += additive;
+    }
+
+    void addToDenominator(int additive){
+        this.denominator += additive;
+    }
+
+    void addToBoth(Fraction other){
+        this.numerator += other.numerator;
+        this.denominator += other.denominator;
+    }
 }
