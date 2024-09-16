@@ -17,6 +17,14 @@ public class Fraction {
         this.denominator = denominator;
     }
 
+    int getNumerator(){
+        return numerator;
+    }
+
+    int getDenominator(){
+        return denominator;
+    }
+
     void addToNumerator(int additive){
         this.numerator += additive;
     }
