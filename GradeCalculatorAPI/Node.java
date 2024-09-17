@@ -11,6 +11,7 @@ enum GradingStyle{
 interface Node{
     void setPoints(int points);
     void setTotalPoints(int maxPoints);
+    Fraction getGrade();
 }
 
 class Root implements Node{
@@ -51,6 +52,26 @@ class Root implements Node{
     void removeAssignment(String title){
         assignments.remove(title);
     }
+
+    public Fraction getGrade(){
+        Fraction result = new Fraction(0,0);
+        switch(grader){
+            case PointSystemAddUp:
+                for(Node n : assignments.values()){
+                    result.addToBoth(n.getGrade());
+                }
+                break;
+            case PointSystemTotalDefined:
+                result.setDenominator(this.totalPoints);
+                for(Node n : assignments.values()){
+                    result.addToNumerator(n.getGrade().getNumerator());
+                }
+            default:
+                throw new IllegalStateException();
+        }
+        return result;
+    }
+    
 }
 
 /**
@@ -115,5 +136,11 @@ class Assignment implements Node{
             return false;
         return this.name.equals(other.name) && this.points == other.points && 
           this.totalPoints == other.totalPoints && this.isGraded == other.isGraded;
+    }
+
+    public Fraction getGrade(){
+        if(isGraded)
+            return new Fraction(this.points,this.totalPoints);
+        return new Fraction(0,0);
     }
 }
