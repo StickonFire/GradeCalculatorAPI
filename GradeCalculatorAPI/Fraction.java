@@ -37,4 +37,13 @@ public class Fraction {
         this.numerator += other.numerator;
         this.denominator += other.denominator;
     }
+
+    @Override
+    public boolean equals(Object other){
+        if(other instanceof Fraction){
+            Fraction hold = (Fraction)other;
+            return this.numerator == hold.numerator && this.denominator == hold.denominator;
+        }
+        return false;
+    }
 }
