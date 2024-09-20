@@ -71,6 +71,7 @@ class Root implements Node{
                 for(Node n : assignments.values()){
                     result.addToNumerator(n.getGrade().getNumerator());
                 }
+                break;
             default:
                 throw new IllegalStateException();
         }
