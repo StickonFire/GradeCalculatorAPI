@@ -147,4 +147,10 @@ public class NodeTest {
         assertEquals("Make sure nothing happens if it is set the same.",GradingStyle.PointSystemAddUp,test.grader);
 
     }
+
+    @Test
+    public void testRootDefaultGrader(){
+        Root newValue = new Root(null);
+        assertEquals("Make sure that the Root using the assignments only field has the default grader",GradingStyle.PointSystemAddUp,newValue.grader);
+    }
 }
