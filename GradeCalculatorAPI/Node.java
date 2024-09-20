@@ -24,6 +24,11 @@ class Root implements Node{
         this.assignments = assignments;
     }
 
+    Root(Map<String, Node> assignments, GradingStyle grader){
+        this.assignments = assignments;
+        this.grader = grader;
+    }
+
 
     void addAssignment(Assignment assignment){
         this.assignments.put(assignment.name,assignment);
