@@ -5,7 +5,7 @@ compileTestAll:
 	javac -cp ".;lib\hamcrest-core-1.3.jar;lib\junit-4.10.jar" GradeCalculatorAPI\Node.java GradeCalculatorAPI\GradeCalculatorAPI.java GradeCalculatorAPI\NodeTest.java GradeCalculatorAPI\Fraction.java
 
 testGradeCalculatorAPI: compileAllTest
-	java -cp ".;lib\hamcrest-core-1.3.jar;lib\junit-4.10.jar" org.junit.runner.JUnitCore GradeCalculatorAPI.NodeTest
+	java -cp ".;lib\hamcrest-core-1.3.jar;lib\junit-4.10.jar" org.junit.runner.JUnitCore GradeCalculatorAPI.GradeCalculatorAPITest
 
 testGetGrade: compileAllTest
 	java -cp ".;lib\hamcrest-core-1.3.jar;lib\junit-4.10.jar" org.junit.runner.JUnitCore GradeCalculatorAPI.GetGradeTest
