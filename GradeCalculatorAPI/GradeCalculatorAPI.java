@@ -7,8 +7,8 @@ public class GradeCalculatorAPI {
         this.assignments = assignments;
     }
 
-    void addAssignment(String name,int points, int totalPoints, boolean isGraded){
-        assignments.addAssignment(AssignmentFactory.makeAssignment(name, points, totalPoints, isGraded));
+    void addAssignment(String name,int points, int totalPoints, boolean ignoreGrade){
+        assignments.addAssignment(AssignmentFactory.makeAssignment(name, points, totalPoints, ignoreGrade));
     }
 
     void addAssignment(String name){
@@ -40,5 +40,8 @@ public class GradeCalculatorAPI {
             target.setTotalPoints(totalPoints);
     }
 
+    Fraction getGrade(){
+        return assignments.getGrade();
+    }
 
 }
