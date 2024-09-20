@@ -37,7 +37,8 @@ public class GetGradeTest {
 
 
     //GradeCalculatorAPI test getGrade
-    @Test public void testGradeCalculatorAPIGetGrade(){
+    @Test 
+    public void testGradeCalculatorAPIGetGrade(){
         Root value = new MockRoot(new Fraction(1,2));
         GradeCalculatorAPI api = new GradeCalculatorAPI(value);
 
