@@ -89,8 +89,8 @@ class AssignmentFactory{
         return new Assignment(title);
     }
 
-    public static Assignment makeAssignment(String title, int points, int totalPoints, boolean ignoreGrade){
-        return new Assignment(points,totalPoints,title,ignoreGrade);
+    public static Assignment makeAssignment(String title, int points, int totalPoints, boolean countGrade){
+        return new Assignment(points,totalPoints,title,countGrade);
     }
 }
 
@@ -104,13 +104,13 @@ class Assignment implements Node{
     String name;
     int points = 0;
     int totalPoints = 0;
-    boolean ignoreGrade = false;
+    boolean countGrade = false;
 
-    Assignment(int points, int totalPoints, String name, boolean ignoreGrade){
+    Assignment(int points, int totalPoints, String name, boolean countGrade){
         this.name = name;
         this.points = points;
         this.totalPoints = totalPoints;
-        this.ignoreGrade = ignoreGrade;
+        this.countGrade = countGrade;
     }
 
     Assignment(String name){
@@ -125,12 +125,12 @@ class Assignment implements Node{
         this.totalPoints = maxPoints;
     }
 
-    boolean ignoreGrade(){
-        return this.ignoreGrade;
+    boolean countGrade(){
+        return this.countGrade;
     }
 
-    void setignoreGrade(boolean newGraded){
-        this.ignoreGrade = newGraded;
+    void setCountGrade(boolean newGraded){
+        this.countGrade = newGraded;
     }
 
     @Override
@@ -141,11 +141,11 @@ class Assignment implements Node{
         else
             return false;
         return this.name.equals(other.name) && this.points == other.points && 
-          this.totalPoints == other.totalPoints && this.ignoreGrade == other.ignoreGrade;
+          this.totalPoints == other.totalPoints && this.countGrade == other.countGrade;
     }
 
     public Fraction getGrade(){
-        if(ignoreGrade)
+        if(countGrade)
             return new Fraction(this.points,this.totalPoints);
         return new Fraction(0,0);
     }

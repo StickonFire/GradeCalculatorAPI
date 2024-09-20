@@ -27,7 +27,7 @@ public class GetGradeTest {
     }
     //Test Assignment get grade
     @Test
-    public void testAssignmentGetGradeignoreGrade(){
+    public void testAssignmentGetGradecountGrade(){
         assertEquals("Make sure that a graded assignment correctly provides its grade as points/totalPoints",new Fraction(1,2),first.getGrade());
         assertEquals("Make sure that an ungraded assignment returns nothing for its grade",new Fraction(0,0),second.getGrade());
     }

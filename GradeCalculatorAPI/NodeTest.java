@@ -22,21 +22,21 @@ public class NodeTest {
     }
 
     @Test
-    public void testAssignmentignoreGrade(){
+    public void testAssignmentcountGrade(){
         Assignment test = new Assignment("test");
-        test.ignoreGrade = true;
-        assertTrue("Checks if ignoreGrade properly returns true",test.ignoreGrade());
-        test.ignoreGrade = false;
-        assertFalse("Checks if ignoreGrade properly returns false",test.ignoreGrade());
+        test.countGrade = true;
+        assertTrue("Checks if countGrade properly returns true",test.countGrade());
+        test.countGrade = false;
+        assertFalse("Checks if countGrade properly returns false",test.countGrade());
     }
 
     @Test
-    public void testAssignmentSetignoreGrade(){
+    public void testAssignmentSetCountGrade(){
         Assignment test = new Assignment("test");
-        test.setignoreGrade(true);
-        assertTrue("Checks if setignoreGrade properly answers true",test.ignoreGrade);
-        test.setignoreGrade(false);
-        assertFalse("Checks if setignoreGrade properly sets ignoreGrade to false",test.ignoreGrade);
+        test.setCountGrade(true);
+        assertTrue("Checks if setcountGrade properly answers true",test.countGrade);
+        test.setCountGrade(false);
+        assertFalse("Checks if setcountGrade properly sets countGrade to false",test.countGrade);
 
     }
 
@@ -65,7 +65,7 @@ public class NodeTest {
         assertFalse("Checks if Assignment equals works when points are different",first.equals(second));
         assertFalse("Checks if Assignment equals works when totalPoints are different",first.equals(third));
         assertFalse("Checks if Assignment equals works when title is different",first.equals(fourth));
-        assertFalse("Checks if Assignment equals works when ignoreGrade is different",first.equals(fifth));
+        assertFalse("Checks if Assignment equals works when countGrade is different",first.equals(fifth));
     }
 
     @Test
