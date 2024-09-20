@@ -36,4 +36,27 @@ public class GetGradeTest {
     //Test Root get grade
 
 
+    //GradeCalculatorAPI test getGrade
+    @Test public void testGradeCalculatorAPIGetGrade(){
+        Root value = new MockRoot(new Fraction(1,2));
+        GradeCalculatorAPI api = new GradeCalculatorAPI(value);
+
+        assertEquals("Makes sure that GradeCalculatorAPI does run the root's getGrade to return the grade.",new Fraction(1,2),api.getGrade());
+    }
+}
+
+class MockRoot extends Root{
+
+    private Fraction score;
+
+    MockRoot(Fraction score){
+        super(null);
+
+        this.score = score;
+    }
+
+    @Override
+    public Fraction getGrade(){
+        return this.score;
+    }
 }
