@@ -5,7 +5,10 @@ import java.util.HashMap;
 
 enum GradingStyle{
     PointSystemTotalDefined, 
-    PointSystemAddUp
+    PointSystemAddUp,
+    WeightSystemEquals,
+    WeightSystemAddUp,
+    WeightSystemDefined
 }
 
 interface Node{
